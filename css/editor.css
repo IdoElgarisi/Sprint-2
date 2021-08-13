@@ -1,0 +1,335 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    color: black;
+    background-color: #22252c;
+}
+
+.edit-area {
+    justify-content: center;
+}
+
+.editor-bar {
+    background-color: #383b42;
+    border-radius: 30px;
+}
+
+.text-line {
+    width: 90%;
+    box-shadow: 1px 5px 0 #bbc4d1, inset 0 5px 0 #ffffff;
+    border-radius: 28px;
+    max-height: 2rem;
+}
+
+.edit-btns .fa {
+    color: white;
+}
+
+.edit-btns {
+    margin: 0 auto;
+}
+
+.edit-btns button {
+    min-height: 50px;
+    min-width: 50px;
+    border: none;
+    border-radius: 10px;
+}
+
+.delete-btn {
+    background-image: linear-gradient(-38deg, #cf1d37 0%, #cf1d37 1%, #f05036 100%);
+    box-shadow: 1px 5px 0 #8c0606;
+}
+
+.add-btn {
+    /* background-color: rgb(135, 212, 19); */
+    background-image: linear-gradient(-38deg, #42eb5c 0%, #37b34a 100%);
+    box-shadow: 1px 5px 0 #015d33;
+}
+
+.switch-btn {
+    background-color: #36acca;
+    box-shadow: 1px 3px 0 #048b97;
+}
+
+.up-btn .fa, .down-btn .fa {
+    color: black;
+}
+
+.fa {
+    font-size: 1.3rem;
+}
+
+.fa-exchange {
+    transform: rotate(90deg);
+}
+
+.font-size {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.canvas {
+    object-fit: cover;
+    max-height: 500px;
+    border: 2px solid #363a42;
+    border-radius: 10px;
+}
+
+/*  */
+
+.text-editor {
+    display: grid;
+    width: 90%;
+    border-radius: 15px;
+    background-color: #19a59f;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(5, minmax(35px, 70px));
+    grid-template-rows: repeat(2, 70px);
+    gap: 15px;
+    grid-template-areas: "font-size-up font-size-down align-left align-center align-right" "font-selctor font-selctor font-selctor fill-color stroke-color ";
+}
+
+.text-editor button {
+    border-radius: 10px;
+    border: none;
+    height: 45px;
+    width: 45px;
+    box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
+}
+
+.font-size-up {
+    grid-area: font-size-up;
+}
+
+.font-size-down {
+    grid-area: font-size-down;
+}
+
+.align-left {
+    grid-area: align-left;
+}
+
+.align-center {
+    grid-area: align-center;
+}
+
+.align-right {
+    grid-area: align-right;
+}
+
+.font-selector {
+    grid-area: font-selector;
+}
+
+.fill-color {
+    grid-area: fill-color;
+}
+
+.border-color {
+    grid-area: border-color;
+    color: ivory;
+}
+
+.btn {
+    border: none;
+    text-decoration: none;
+    border-radius: 10px;
+    line-height: 1.75rem;
+    color: white;
+}
+
+.download-btn {
+    background-color: #8f44bb;
+}
+
+.download-btn:hover {
+    background-color: #6c328d;
+}
+
+.share-btn {
+    background-color: #1e7cd3;
+}
+
+.share-btn:hover {
+    background-color: #196cbb;
+}
+
+.fill-color {
+    color: ivory;
+}
+
+.btn-menu-toggle {
+    display: none;
+}
+
+@media (max-width:840px) {
+    .edit-area {
+        margin-top: 20px;
+        flex-direction: column;
+    }
+    .editor-bar {
+        width: 400px;
+        padding: 30px 15px;
+        height: 400px;
+        width: 400px;
+    }
+    .text-line {
+        margin-bottom: 20px;
+        height: 50px;
+    }
+    .canvas {
+        object-fit: cover;
+        height: 400px;
+        border: 2px solid #363a42;
+        border-radius: 10px;
+    }
+    .text-editor {
+        height: 150px;
+        margin-top: 25px;
+        padding-inline-start: 20px;
+    }
+    .nav-list {
+        position: fixed;
+        top: 0;
+        right: 0;
+        flex-direction: column;
+        min-width: 50%;
+        background-color: #292929;
+        height: 100vh;
+        box-shadow: 0px 0px 0px transparent;
+        transform: translateX(100%);
+        transition: transform .6s;
+    }
+    .btn {
+        margin-top: 30px;
+        margin-inline-end: 10px;
+    }
+    .download-btn {
+        width: 150px;
+        height: 50px;
+    }
+    .share-btn {
+        width: 150px;
+        height: 50px;
+    }
+    .nav-list li {
+        display: block;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #e7e7e7;
+        width: 100=px;
+    }
+    .fa.fa-bars {
+        border: 0;
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        font-size: 3rem;
+        color: rgb(223, 221, 221);
+    }
+    .btn-menu-toggle {
+        border: 0;
+        display: block;
+    }
+    body.menu-open .screen {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    body.menu-open .nav-list {
+        transform: translateX(0);
+        box-shadow: -8px 0px 20px rgb(0 0 0 / 20%);
+    }
+    body.menu-open .fa-bars{
+        display: none;
+    }
+}
+
+@media (min-width:840px) {
+    .edit-area {
+        margin-top: 20px;
+        flex-direction: column;
+    }
+    .editor-bar {
+        width: 500px;
+        padding: 30px 15px;
+        height: 400px;
+    }
+    .text-line {
+        margin-bottom: 20px;
+        height: 50px;
+    }
+    .canvas {
+        object-fit: cover;
+        height: 500px;
+        border: 2px solid #363a42;
+        border-radius: 10px;
+    }
+    .text-editor {
+        height: 150px;
+        margin-top: 25px;
+        padding-inline-start: 20px;
+    }
+    .btn {
+        margin-top: 30px;
+        margin-inline-end: 10px;
+    }
+    .download-btn {
+        width: 150px;
+        height: 50px;
+    }
+    .share-btn {
+        width: 150px;
+        height: 50px;
+    }
+}
+
+@media (min-width:1020px) {
+    .edit-area {
+        margin-top: 20px;
+        flex-direction: row;
+    }
+    .editor-bar {
+        width: 525px;
+        padding: 0 15px;
+        height: 500px;
+        width: 500px;
+        margin-inline-start: 50px;
+    }
+    .text-line {
+        margin: 20px auto;
+        min-height: 50px;
+    }
+    .img-area {
+        min-width: 500px;
+        min-height: 500px;
+    }
+    .canvas {
+        object-fit: cover;
+        max-height: 500px;
+        border: 2px solid #363a42;
+        border-radius: 10px;
+    }
+    .text-editor {
+        height: 150px;
+        margin-top: 25px;
+        padding-inline-start: 20px;
+    }
+    .btn {
+        margin-top: 50px;
+        margin-inline-end: 10px;
+    }
+    .share-btn {
+        min-width: 210px;
+        height: 50px;
+    }
+    .download-btn {
+        min-width: 210px;
+        height: 50px;
+    }
+}
+

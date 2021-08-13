@@ -7,20 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/editor.css">
     <title>MemeGen</title>
 </head>
 
 <body onload="onInit()">
+    <div class="screen" onclick="toggleMenu()"></div>
     <header class="main-header ">
-        <nav class="main-layout flex align-center space-between">
+        <nav class="main-nav flex align-center space-between">
             <div class="logo "><a onclick="onShowGallery()" href="#"><img src="/LOGO/LOGO.png" alt="" srcset=""></a>
             </div>
-            <ul class=" main-nav clean-list flex">
+            <ul class="nav-list clean-list flex">
                 <li><a onclick="onShowGallery()" href="#">Gallery</a></li>
                 <li><a onclick="onShowMemes()" href="#">Memes</a></li>
                 <!-- <li><a onclick="onShowAbout()" href="#">About</a></li> -->
             </ul>
         </nav>
+        <button class="btn-menu-toggle" onclick="toggleMenu()"><span class="fa fa-bars"></span></button>
+
     </header>
 
     <main class="gallery-container">
@@ -30,9 +35,7 @@
         <section class="grid-container"></section>
     </main>
     <main class="editor-container">
-        <header class="editor-header ">
-            <h2> Meme Editor</h2>
-        </header>
+
         <section class="edit-area flex align-center ">
             <div class="img-area">
                 <canvas class="canvas" id="canvas" width="500" height="500"></canvas>
@@ -58,27 +61,19 @@
                     <button class="align-right" onclick="onAlignText(this.classList)"><i
                             class="fa fa-align-right"></i></button>
                     <label for="fill-color">
-                            <input onchange="onGetColor()" type="color" name="color-selector" class="fill-color">
-                        </label>
+                        <input onchange="onGetColor()" type="color" name="color-selector" class="fill-color">
+                    </label>
                     <label for="stroke-color">
-                            <input onchange="onGetBorderColor()" type="color" name="border-color" class="border-color">
-                        </label>
+                        <input onchange="onGetBorderColor()" type="color" name="border-color" class="border-color">
+                    </label>
                     <div class="font-selctor">
                         <input type="list" class="font-selector">
                     </div>
                 </section>
                 <div class="output-container flex space-between">
+                    <button class="btn share-btn"><i class="fa fa-share"></i> Share</button>
                     <button class="btn download-btn"><a href="#" class="btn" onclick="downloadImg(this)"
-                            download="my-img.jpg"><i class="fa fa-download"></i> </a></button>
-                    <button class="btn upload-btn" onclick="uploadImg()"><i class="fa fa-upload"></i><a href=""></a>
-                    </button>
-                    <div class="share-container">
-                        <button class="btn share-btn"><i class="fa fa-share"></i> Share</button>
-                    </div>
-                </div>
-
-                <div class="share-msg">
-                    <p class="user-msg"></p>
+                            download="my-img.jpg"> <i class="fa fa-download"></i> Dowload</a></button>
                 </div>
             </div>
 

@@ -186,3 +186,11 @@ function moveIdx() {
     document.querySelector('.text-line').focus()
     gMeme.selectedLineIdx = gCurrLineIdx;
 }
+
+function toggleMenu() {
+    if(document.querySelector('.nav-list').style.display==='absolute'){
+      return
+    }else{
+      document.body.classList.toggle('menu-open');
+    }
+  }
