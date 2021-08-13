@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>MemeGen</title>
+</head>
+
+<body onload="onInit()">
+    <header class="main-header ">
+        <nav class="main-layout flex align-center space-between">
+            <div class="logo "><img src="/LOGO/LOGO.png" alt="" srcset=""></div>
+            <ul class=" main-nav clean-list flex">
+                <li><a onclick="onShowGallery()" href="#">Gallery</a></li>
+                <li><a onclick="onShowMemes()" href="#">Memes</a></li>
+                <!-- <li><a onclick="onShowAbout()" href="#">About</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <main class="gallery-container">
+        <section class="grid-container"></section>
+    </main>
+    <main class="memes-container">
+        <section class="grid-container"></section>
+    </main>
+    <main class="editor-container">
+        <header class="editor-header ">
+            <h2> Meme Editor</h2>
+        </header>
+        <section class="edit-area flex align-center ">
+            <div class="img-area">
+                <canvas id="canvas" width="500" height="500"></canvas>
+            </div>
+            <div class="editor-bar flex direction align-center">
+                <input type="text" class="text-line" onkeyup="onRenderTxt()">
+                <div class="edit-btns">
+                    <button onclick="onMoveIdx(this)" class="line-up">Move u</button>
+                    <button onclick="onMoveIdx(this)" class="line-down">Move d</button>
+                    <button onclick="onAddLine()">Add</button>
+                    <button onclick="onDeleteLine()">Delete</button>
+                </div>
+
+                <section class="text-editor grid">
+                    <button class="font-size-up" onclick="onFontSizeChange(this.classList)">A+</button>
+                    <button class="font-size-down" onclick="onFontSizeChange(this.classList)">A-</button>
+                    <button class="align-left" onclick="onAlignText(this.classList)"><i class="fa fa-align-left"></i></button>
+                    <button class="align-center" onclick="onAlignText(this.classList)"><i class="fa fa-align-center"></i></button>
+                    <button class="align-right" onclick="onAlignText(this.classList)"><i class="fa fa-align-right"></i></button>
+                    <div class="fill-color">
+                        <h4>Fill color: </h4>
+                        <input onchange="onGetColor()" type="color" name="color-selector" class="fill-color">
+                    </div>
+                    <div class="border-color">
+                        <h4>Border color: </h4>
+                        <input onchange="onGetBorderColor()" type="color" name="border-color" class="border-color">
+                    </div>
+                    <div class="font-selctor">
+                        <input type="list" class="font-selector">
+                    </div>
+                </section>
+                <div class="output-container flex space-between">
+                    <button class="btn download-btn"><a href="#" class="btn" onclick="downloadImg(this)"
+                            download="my-img.jpg"><i class="fa fa-download"></i> Download Image</a></button>
+                    <button class="btn upload-btn" onclick="uploadImg()"><i class="fa fa-upload"></i><a href=""></a>
+                        Upload Image from Canvas</button>
+                    <div class="share-container">
+                        <button class="btn share-btn"><i class="fa fa-share"></i> Share</button>
+                    </div>
+                </div>
+
+                <div class="share-msg">
+                    <p class="user-msg"></p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+
+    <script src="js/storage-service.js"></script>
+    <script src="js/upload-service.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/controller.js"></script>
+    <!-- <script src="js/i18n-service.js"></script> -->
+</body>
+
+</html>

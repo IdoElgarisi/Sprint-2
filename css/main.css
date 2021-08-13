@@ -1,0 +1,297 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    color: black;
+    background-color: #22252c;
+}
+
+.main-header {
+    height: 73px;
+    border-radius: 37px;
+    /* background-color: #5970c1; */
+    background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
+}
+
+.logo {
+    margin: 25px;
+}
+
+.logo img {
+    width: 10vh;
+}
+
+.main-layout {
+    max-width: 90%;
+}
+
+.main-nav a {
+    text-decoration: none;
+}
+
+.main-nav li {
+    font-size: 1.5rem;
+    margin-inline-end: 1rem;
+}
+
+.gallery-container{
+    margin: 50px auto;
+
+}
+
+.grid-container {
+    display: grid;
+   justify-content: center;
+    gap: 10px 20px;
+    grid-template-columns: repeat(6, minmax(100px, 150px));
+    grid-template-rows: repeat(3, minmax(100px, 150px));
+    /* margin: 50px 10px; */
+    grid-template-areas: "item-1 item-2 item-3 item-4 item-5 item-6" "item-7 item-8 item-9 item-10 item-11 item-12" "item-13 item-14 item-15 item-16 item-17 item-18";
+}
+
+.grid-item {
+    /* border: 1px solid black; */
+    max-height: 150px;
+    max-width: 150px;
+}
+
+.grid-item img {
+    object-fit: cover;
+    max-height: 150px;
+    max-width: 150px;
+}
+
+.item-1 {
+    grid-area: item-1;
+}
+
+.item-2 {
+    grid-area: item-2;
+}
+
+.item-3 {
+    grid-area: item-3;
+}
+
+.item-4 {
+    grid-area: item-4;
+}
+
+.item-5 {
+    grid-area: item-5;
+}
+
+.item-6 {
+    grid-area: item-6;
+}
+
+.item-7 {
+    grid-area: item-7;
+}
+
+.item-8 {
+    grid-area: item-8;
+}
+
+.item-9 {
+    grid-area: item-9;
+}
+
+.item-10 {
+    grid-area: item-10;
+}
+
+.item-11 {
+    grid-area: item-11;
+}
+
+.item-12 {
+    grid-area: item-12;
+}
+
+.item-13 {
+    grid-area: item-13;
+}
+
+.item-14 {
+    grid-area: item-14;
+}
+
+.item-15 {
+    grid-area: item-15;
+}
+
+.item-16 {
+    grid-area: item-16;
+}
+
+.item-17 {
+    grid-area: item-17;
+}
+
+.item-18 {
+    grid-area: item-18;
+}
+
+/* EDITOR */
+
+.editor-header {
+    color: ivory;
+    text-align: center;
+    margin: 2vh 0;
+    font-size: 2rem;
+}
+
+.edit-area {
+    /* margin: 0 auto; */
+    /* width: 800px; */
+    justify-content: center;
+}
+
+.editor-bar {
+    width: 500px;
+    /* position: absolute;
+    right: 20px; */
+    margin-inline-start: 50px;
+    background-color: rgb(54, 52, 52);
+    height: 500px;
+   min-width: 400px;
+   
+}
+.text-editor{
+    margin-top: 20px;
+    min-height: 20px;
+    align-items: flex-start;
+}
+
+.text-line {
+    width: 80%;
+    margin: 20px auto;
+    box-shadow: 1px 2px 0 #bbc4d1, inset 0 5px 0 #ffffff;
+    /* margin-top: 20px; */
+    border-radius: 28px;
+    max-height: 2rem;
+}
+
+.edit-btns {
+    margin: 0 auto;
+}
+
+.img-area {
+    background-color: #fff;
+}
+
+.text-editor {
+
+    grid-template-columns: repeat(5, minmax(35px, 50px));
+    grid-template-rows: repeat(3, 70px);
+    gap: 10px;
+    grid-template-areas: "font-size-up font-size-down align-left align-center align-right" 
+    "fill-color fill-color fill-color border-color border-color"
+    "font-selctor font-selctor font-selctor font-selctor font-selctor";
+}
+
+.font-size-up {
+    grid-area: font-size-up;
+}
+
+.font-size-down {
+    grid-area: font-size-down;
+}
+
+.align-left {
+    grid-area: align-left;
+}
+
+.align-center {
+    grid-area: align-center;
+}
+
+.align-right {
+    grid-area: align-right;
+}
+
+.font-selector {
+    grid-area: font-selector;
+}
+
+.fill-color {
+    grid-area: fill-color;
+}
+
+.border-color {
+    grid-area: border-color;
+    color: ivory;
+}
+.btn {
+    margin-top: 50px;
+    margin-inline-end: 10px;
+    border: none;
+    text-decoration: none;
+    border-radius: 10px;
+    line-height: 1.75rem;
+    color: white;
+}
+.download-btn{
+    background: #dd4b39;
+}
+.download-btn:hover{
+    background: #cb2027
+}
+
+.upload-btn{
+    background: #45bbff;
+}
+.upload-btn:hover{
+    background: #007bb5;
+}
+
+.share-btn{
+    background: #3B5998;
+}
+.share-btn:hover{
+    background: #2c4477;
+}
+.share-msg{
+    margin-top: 20px;
+}
+.fill-color{
+    color: ivory;
+}
+/* HELPERS */
+
+.grid {
+    display: grid;
+}
+
+/* Flex Helpers */
+
+.flex {
+    display: flex;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+.flex.direction {
+    flex-direction: column;
+}
+
+/* list-helpers */
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: white;
+}
