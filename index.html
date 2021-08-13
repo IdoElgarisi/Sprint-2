@@ -13,7 +13,8 @@
 <body onload="onInit()">
     <header class="main-header ">
         <nav class="main-layout flex align-center space-between">
-            <div class="logo "><img src="/LOGO/LOGO.png" alt="" srcset=""></div>
+            <div class="logo "><a onclick="onShowGallery()" href="#"><img src="/LOGO/LOGO.png" alt="" srcset=""></a>
+            </div>
             <ul class=" main-nav clean-list flex">
                 <li><a onclick="onShowGallery()" href="#">Gallery</a></li>
                 <li><a onclick="onShowMemes()" href="#">Memes</a></li>
@@ -34,40 +35,43 @@
         </header>
         <section class="edit-area flex align-center ">
             <div class="img-area">
-                <canvas id="canvas" width="500" height="500"></canvas>
+                <canvas class="canvas" id="canvas" width="500" height="500"></canvas>
             </div>
             <div class="editor-bar flex direction align-center">
                 <input type="text" class="text-line" onkeyup="onRenderTxt()">
                 <div class="edit-btns">
-                    <button onclick="onMoveIdx(this)" class="line-up">Move u</button>
-                    <button onclick="onMoveIdx(this)" class="line-down">Move d</button>
-                    <button onclick="onAddLine()">Add</button>
-                    <button onclick="onDeleteLine()">Delete</button>
+                    <button class="up-btn" onclick="onMoveLine(this)" class="up"><i class="fa fa-arrow-up"></i></button>
+                    <button class="down-btn" onclick="onMoveLine(this)" class="down"><i
+                            class="fa fa-arrow-down"></i></button>
+                    <button class="switch-btn" onclick="onMoveIdx()"><i class="fa fa-exchange"></i></button>
+                    <button class="add-btn" onclick="onAddLine()"><i class="fa fa-plus"></i></button>
+                    <button class="delete-btn" onclick="onDeleteLine()"><i class="fa fa-trash"></i></button>
                 </div>
 
                 <section class="text-editor grid">
-                    <button class="font-size-up" onclick="onFontSizeChange(this.classList)">A+</button>
-                    <button class="font-size-down" onclick="onFontSizeChange(this.classList)">A-</button>
-                    <button class="align-left" onclick="onAlignText(this.classList)"><i class="fa fa-align-left"></i></button>
-                    <button class="align-center" onclick="onAlignText(this.classList)"><i class="fa fa-align-center"></i></button>
-                    <button class="align-right" onclick="onAlignText(this.classList)"><i class="fa fa-align-right"></i></button>
-                    <div class="fill-color">
-                        <h4>Fill color: </h4>
-                        <input onchange="onGetColor()" type="color" name="color-selector" class="fill-color">
-                    </div>
-                    <div class="border-color">
-                        <h4>Border color: </h4>
-                        <input onchange="onGetBorderColor()" type="color" name="border-color" class="border-color">
-                    </div>
+                    <button class="font-size font-size-up" onclick="onFontSizeChange(this.classList)">A+</button>
+                    <button class="font-size font-size-down" onclick="onFontSizeChange(this.classList)">A-</button>
+                    <button class="align-left" onclick="onAlignText(this.classList)"><i
+                            class="fa fa-align-left"></i></button>
+                    <button class="align-center" onclick="onAlignText(this.classList)"><i
+                            class="fa fa-align-center"></i></button>
+                    <button class="align-right" onclick="onAlignText(this.classList)"><i
+                            class="fa fa-align-right"></i></button>
+                    <label for="fill-color">
+                            <input onchange="onGetColor()" type="color" name="color-selector" class="fill-color">
+                        </label>
+                    <label for="stroke-color">
+                            <input onchange="onGetBorderColor()" type="color" name="border-color" class="border-color">
+                        </label>
                     <div class="font-selctor">
                         <input type="list" class="font-selector">
                     </div>
                 </section>
                 <div class="output-container flex space-between">
                     <button class="btn download-btn"><a href="#" class="btn" onclick="downloadImg(this)"
-                            download="my-img.jpg"><i class="fa fa-download"></i> Download Image</a></button>
+                            download="my-img.jpg"><i class="fa fa-download"></i> </a></button>
                     <button class="btn upload-btn" onclick="uploadImg()"><i class="fa fa-upload"></i><a href=""></a>
-                        Upload Image from Canvas</button>
+                    </button>
                     <div class="share-container">
                         <button class="btn share-btn"><i class="fa fa-share"></i> Share</button>
                     </div>

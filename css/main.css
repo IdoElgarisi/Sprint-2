@@ -36,14 +36,13 @@ html {
     margin-inline-end: 1rem;
 }
 
-.gallery-container{
+.gallery-container {
     margin: 50px auto;
-
 }
 
 .grid-container {
     display: grid;
-   justify-content: center;
+    justify-content: center;
     gap: 10px 20px;
     grid-template-columns: repeat(6, minmax(100px, 150px));
     grid-template-rows: repeat(3, minmax(100px, 150px));
@@ -157,10 +156,10 @@ html {
     margin-inline-start: 50px;
     background-color: rgb(54, 52, 52);
     height: 500px;
-   min-width: 400px;
-   
+    min-width: 400px;
 }
-.text-editor{
+
+.text-editor {
     margin-top: 20px;
     min-height: 20px;
     align-items: flex-start;
@@ -173,24 +172,78 @@ html {
     /* margin-top: 20px; */
     border-radius: 28px;
     max-height: 2rem;
+    min-height: 50px;
+}
+
+.edit-btns .fa {
+    color: white;
 }
 
 .edit-btns {
     margin: 0 auto;
 }
 
+.edit-btns button {
+    min-height: 35px;
+    min-width: 35px;
+}
+
+.delete-btn {
+    text-align: center;
+    min-width: 25px;
+    background-color: red;
+}
+
+.add-btn {
+    background-color: rgb(135, 212, 19);
+}
+
+.switch-btn {
+    background-color: royalblue;
+}
+
+.up-btn .fa, .down-btn .fa {
+    color: black;
+}
+
+.fa {
+    font-size: 20px;
+}
+
+.fa-exchange {
+    transform: rotate(90deg);
+}
+
+.font-size {
+    font-size: 20px;
+    font-weight: 700;
+}
+
 .img-area {
     background-color: #fff;
+    min-width: 500px;
+    min-height: 500px;
+}
+
+.canvas {
+    object-fit: cover;
 }
 
 .text-editor {
+    padding: 10px;
+    background-color: #19a59f;
+    border-radius: 5%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(35px, 70px));
+    grid-template-rows: repeat(2, 70px);
+    gap: 5px;
+    grid-template-areas: "font-size-up font-size-down align-left align-center align-right" "font-selctor font-selctor font-selctor fill-color stroke-color ";
+}
 
-    grid-template-columns: repeat(5, minmax(35px, 50px));
-    grid-template-rows: repeat(3, 70px);
-    gap: 10px;
-    grid-template-areas: "font-size-up font-size-down align-left align-center align-right" 
-    "fill-color fill-color fill-color border-color border-color"
-    "font-selctor font-selctor font-selctor font-selctor font-selctor";
+.text-editor button {
+    min-height: 35px;
+    max-height: 50px;
+    max-width: 50px;
 }
 
 .font-size-up {
@@ -225,6 +278,7 @@ html {
     grid-area: border-color;
     color: ivory;
 }
+
 .btn {
     margin-top: 50px;
     margin-inline-end: 10px;
@@ -234,32 +288,39 @@ html {
     line-height: 1.75rem;
     color: white;
 }
-.download-btn{
+
+.download-btn {
     background: #dd4b39;
 }
-.download-btn:hover{
+
+.download-btn:hover {
     background: #cb2027
 }
 
-.upload-btn{
+.upload-btn {
     background: #45bbff;
 }
-.upload-btn:hover{
+
+.upload-btn:hover {
     background: #007bb5;
 }
 
-.share-btn{
+.share-btn {
     background: #3B5998;
 }
-.share-btn:hover{
+
+.share-btn:hover {
     background: #2c4477;
 }
-.share-msg{
+
+.share-msg {
     margin-top: 20px;
 }
-.fill-color{
+
+.fill-color {
     color: ivory;
 }
+
 /* HELPERS */
 
 .grid {
@@ -294,4 +355,17 @@ html {
 
 a {
     color: white;
+}
+
+.color-btn {
+    font: 15px helvetica, arial;
+    /* -webkit-tap-highlight-color: transparent; */
+    color: #333;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 0 0 8px;
 }

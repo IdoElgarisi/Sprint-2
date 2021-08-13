@@ -4,9 +4,26 @@
 const KEY = 'memesDB';
 let gCurrImg;
 let gCurrLineIdx = 0;
+let gLineCount = 1;
 let gCurrBgcColor = 'white'
-let  gCurrBorderColor ='black'
+let gCurrBorderColor = 'black'
 
+var gMeme = {
+    selectedImgId: 5,
+    selectedLineIdx: 0,
+    lines: [
+        {
+            txt: 'eat falafel',
+            size: 40,
+            align: 'center',
+            color: gCurrBgcColor,
+            borderColor: gCurrBorderColor,
+            idx: gCurrLineIdx,
+            x: 250,
+            y: 50
+        }
+    ]
+}
 var gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: ['happy'] },
     { id: 2, url: 'img/2.jpg', keywords: ['happy'] },
@@ -31,30 +48,15 @@ function getMemes() {
     return gImgs
 }
 
-function setFillColor(color){
+function setFillColor(color) {
     gCurrBgcColor = color;
     gMeme.lines[gCurrLineIdx].color = color;
 }
-function setborderColor(color){
+function setborderColor(color) {
     gCurrBorderColor = color;
     gMeme.lines[gCurrLineIdx].borderColor = color;
 }
-var gMeme = {
-    selectedImgId: 5,
-    selectedLineIdx: 0,
-    lines: [
-        {
-            txt: 'eat falafel',
-            size: 40,
-            align: 'left',
-            color: gCurrBgcColor,
-            borderColor:gCurrBorderColor,
-            idx: gCurrLineIdx,
-            x: 150,
-            y: 100
-        }
-    ]
-}
+
 function resetGMeme() {
     gMeme = {
         selectedImgId: 5,
@@ -63,16 +65,17 @@ function resetGMeme() {
             {
                 txt: ' ',
                 size: 40,
-                align: 'left',
+                align: 'center',
                 color: gCurrBgcColor,
                 borderColor: gCurrBorderColor,
                 idx: 0,
-                x: 150,
-                y: 100
+                x: 250,
+                y: 50
             }
         ]
     }
 }
+
 function getImgById(imgId) {
     let img = gImgs.find(function (img) {
         return +imgId === img.id
@@ -87,9 +90,11 @@ function drawImg(src) {
 }
 
 function drawText(meme, x, y, idx) {
+
     document.querySelector('.text-line').value = meme.lines[idx].txt
     gCtx.font = `${meme.lines[idx].size}px impact`;
     gCtx.lineWidth = 2
+    gCtx.textAlign = 'center'
     gCtx.strokeStyle = meme.lines[idx].borderColor;
     gCtx.fillStyle = meme.lines[idx].color
     gCtx.font = `${meme.lines[idx].size}px impact`
@@ -103,36 +108,81 @@ function renderTxt(txt) {
     if (!gMeme.lines.length) return
     gMeme.lines[gCurrLineIdx].txt = txt;
     gMeme.lines.map((meme) => {
-        drawText(gMeme, meme.x, (meme.idx + 1) * meme.y, meme.idx)
+        drawText(gMeme, meme.x, meme.y, meme.idx)
     })
 }
 
 function addLine() {
+    gCurrLineIdx++
+    gLineCount++
     let newLine = {
         txt: ' ',
         size: 40,
-        align: 'left',
+        align: 'center',
         color: gCurrBgcColor,
-        borderColor:gCurrBorderColor,
-        idx: gCurrLineIdx + 1,
-        x: 150,
-        y: 100
+        borderColor: gCurrBorderColor,
+        idx: gCurrLineIdx,
+        x: gCanvas.width / 2,
+        y: gCanvas.height / 2
     }
-    gCurrLineIdx++
+    if (gLineCount === 2) {
+        newLine.y = (gCanvas.height - 30);
+    }
     gMeme.lines.push(newLine)
     gMeme.selectedLineIdx = gCurrLineIdx;
-    document.querySelector('.text-line').value = ' '
+
 }
 function deleteLine() {
-    console.log(gCurrLineIdx);
     gMeme.lines.splice(gCurrLineIdx, 1)
-    console.log(gMeme.lines);
+    gLineCount--
     gCurrLineIdx--
     if (gCurrLineIdx < 0) {
         resetGMeme()
         gCurrLineIdx = 0
+        gLineCount = 1
         gMeme.selectedLineIdx = gCurrLineIdx;
     }
     gMeme.selectedLineIdx = gCurrLineIdx;
     onRenderTxt()
+}
+function lineMove(dir) {
+    switch (dir) {
+        case 'up':
+            gMeme.lines[gCurrLineIdx].y += -20
+            break;
+        case 'down':
+            gMeme.lines[gCurrLineIdx].y += 20
+            break;
+
+    }
+    onRenderTxt();
+}
+function alignText(alignClass) {
+    gMeme.lines[gCurrLineIdx].align = alignClass;
+    console.log(alignClass);
+    switch (alignClass.value) {
+        case 'align-left':
+            gMeme.lines[gCurrLineIdx].align = "start";
+            gMeme.lines[gCurrLineIdx].x = 100;
+
+            break;
+        case 'align-center':
+            gMeme.lines[gCurrLineIdx].align = "center";
+            gMeme.lines[gCurrLineIdx].x = gCanvas.width / 2;
+            break;
+        case 'align-right':
+            gMeme.lines[gCurrLineIdx].align = "end";
+            gMeme.lines[gCurrLineIdx].x = gCanvas.width - 150
+    }
+    onRenderTxt()
+}
+
+function moveIdx() {
+    gCurrLineIdx++
+    if (gCurrLineIdx === gMeme.lines.length - 1) {
+        gCurrLineIdx--
+    } else if (gCurrLineIdx < 0) { gCurrLineIdx = 0 }
+    document.querySelector('.text-line').value = gMeme.lines[gCurrLineIdx].txt
+    document.querySelector('.text-line').focus()
+    gMeme.selectedLineIdx = gCurrLineIdx;
 }
