@@ -9,6 +9,7 @@ html {
     color: black;
     background-color: #22252c;
     line-height: 1.714;
+    font-family: poppins-regular;
 
 }
 
@@ -34,6 +35,19 @@ button {
 }
 
   /* FONTS FACES */
+  @font-face {
+    font-family:poppins-regular ;
+    src: url(/fonts/Poppins-Regular.ttf);
+}
+  @font-face {
+    font-family:poppins-medium ;
+    src: url(/fonts/Poppins-Medium.ttf);
+}
+  /* @font-face {
+    font-family: ;
+    src: url(/fonts/);
+} */
+
 
 /* HELPERS */
 .grid {
@@ -47,7 +61,7 @@ button {
 }
 
 .flex.space-between {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .flex.align-center {
@@ -67,3 +81,12 @@ button {
 }
 
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    color: black;
+    background-color: #22252c;
+}

@@ -3,12 +3,14 @@ let gCanvas;
 let gCtx;
 
 function onInit() {
-
+    init()
     renderGallery()
     gCanvas = document.getElementById('canvas')
     gCtx = gCanvas.getContext('2d')
-    gLineCount = 1;
-    gCurrLineIdx = 0
+
+    document.querySelector('.gallery-container').hidden = false;
+    document.querySelector('.editor-container').hidden = true;
+    document.querySelector('.memes-container').hidden = true;
 
 }
 function renderGallery() {
@@ -17,7 +19,7 @@ function renderGallery() {
         return `<div class="grid-item item-${meme.id}"> <img id="${meme.id}" onclick="onShowEditor(this)" src="${meme.url}" alt=""></div>`
     })
 
-    document.querySelector('.grid-container').innerHTML = imgHtmls
+    document.querySelector('.grid-container').innerHTML = imgHtmls.join('')
 
 }
 
@@ -28,17 +30,20 @@ function onShowEditor({ id }) {
     gCurrImg = getImgById(id);
     drawImg(gCurrImg.url)
     drawText(gMeme, 150, 50, gCurrLineIdx)
+    document.body.classList.remove('menu-open')
     document.querySelector('.editor-container').hidden = false;
     document.querySelector('.gallery-container').hidden = true;
     document.querySelector('.memes-container').hidden = true;
 }
 
 function onShowGallery() {
+    document.body.classList.remove('menu-open')
     document.querySelector('.gallery-container').hidden = false;
     document.querySelector('.editor-container').hidden = true;
     document.querySelector('.memes-container').hidden = true;
 }
 function onShowMemes() {
+    document.body.classList.remove('menu-open')
     document.querySelector('.memes-container').hidden = false;
     document.querySelector('.gallery-container').hidden = true;
     document.querySelector('.editor-container').hidden = true;
@@ -62,14 +67,11 @@ function onDeleteLine() {
 
 }
 function onMoveLine(t) {
-    let direction = (t.classList.contains('up')) ? 'up' : 'down';
-    console.log(direction);
+    let direction = (t.classList.contains('up-btn')) ? 'up' : 'down';
     lineMove(direction)
 }
 function onMoveIdx() {
     moveIdx()
-
-
 }
 function onFontSizeChange(fontClass) {
     if (fontClass.contains('font-size-up')) {
@@ -81,7 +83,6 @@ function onFontSizeChange(fontClass) {
 }
 
 function onAlignText(alignClass) {
-    console.log('hiii');
     alignText(alignClass)
 }
 
@@ -96,6 +97,15 @@ function onGetBorderColor() {
     setborderColor(color)
     onRenderTxt()
 }
-function onOpenColorBox(){
+function onOpenColorBox() {
     document.querySelector('.color-popup ibox').classList.toggle('.open-box')
+}
+
+// function onSaveMeme(){
+
+// }
+function onFontChange(font) {
+    console.log(font);
+    setNewFont(font);
+    onRenderTxt()
 }

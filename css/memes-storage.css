@@ -1,0 +1,22 @@
+.memes-container {
+    margin: 0 auto;
+    background-color: #383b42;
+    border-radius: 15px;
+    height: 600px;
+}
+
+@media (max-width:840px) {
+    .memes-container{
+        width: 90%;
+    }
+}
+@media (min-width:840px) {
+    .memes-container{
+        width: 800px;
+    }
+}
+@media (min-width:1020px) {
+    .memes-container{
+        width: 980px;
+    }
+}
