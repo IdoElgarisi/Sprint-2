@@ -5,6 +5,7 @@
 .editor-bar {
     background-color: #383b42;
     border-radius: 30px;
+    height: 500px;
 }
 
 .text-line {
@@ -73,7 +74,6 @@
     border-radius: 10px;
 }
 
-/*  */
 
 .text-editor {
     margin: 0 auto;
@@ -84,8 +84,10 @@
     align-items: center;
     justify-items: center;
     grid-template-columns: repeat(5, minmax(35px, 70px));
-    grid-template-rows: repeat(2, 70px);
-    grid-template-areas: "font-size-up font-size-down align-left align-center align-right" "font-selector font-selector font-selector fill-color stroke-color ";
+    grid-template-rows: repeat(3, 70px);
+    grid-template-areas: "font-size-up font-size-down align-left align-center align-right" 
+    "font-selector font-selector font-selector fill-color stroke-color "
+    "save-btn save-btn save-btn save-btn save-btn";
     gap: 5px;
 }
 
@@ -120,15 +122,17 @@
 .font-selector {
     grid-area: font-selector;
     width: 235px;
-    height: 2.2rem;
+    height: 45px;
     font-weight: 600;
     border-radius: 10px;
     padding-inline-start: 15px;
     box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
 }
-.font-selector:focus{
+
+.font-selector:focus {
     outline: none;
 }
+
 .fill-color {
     grid-area: fill-color;
     height: 1.75rem;
@@ -166,9 +170,10 @@ img.colorpick-eyedropper-input-trigger {
 .share-btn:hover {
     background-color: #196cbb;
 }
-
-.fill-color {
-    color: ivory;
+.save-btn{
+    width: 250px;
+    height: 100px;
+    background-color: rgb(179, 15, 15);
 }
 
 .btn-menu-toggle {
@@ -176,6 +181,7 @@ img.colorpick-eyedropper-input-trigger {
 }
 
 @media (max-width:840px) {
+ 
     .edit-area {
         margin-top: 20px;
         flex-direction: column;
@@ -183,7 +189,7 @@ img.colorpick-eyedropper-input-trigger {
     .editor-bar {
         width: 400px;
         padding: 20px 15px;
-        height: 400px;
+        height: 450px;
         width: 400px;
     }
     .text-line {
@@ -214,16 +220,20 @@ img.colorpick-eyedropper-input-trigger {
         transition: transform .6s;
     }
     .btn {
-        margin-top: 30px;
         margin-inline-end: 10px;
     }
     .download-btn {
+        margin-top: 30px;
         width: 150px;
         height: 50px;
     }
     .share-btn {
+        margin-top: 30px;
         width: 150px;
         height: 50px;
+    }
+    .save-btn{
+        margin-top: 15px;
     }
     .nav-list li {
         display: block;
@@ -291,16 +301,20 @@ img.colorpick-eyedropper-input-trigger {
         padding-inline-start: 20px;
     }
     .btn {
-        margin-top: 30px;
         margin-inline-end: 10px;
     }
     .download-btn {
+        margin-top: 30px;
         width: 150px;
         height: 50px;
     }
     .share-btn {
+        margin-top: 30px;
         width: 150px;
         height: 50px;
+    }
+    .save-btn{
+        margin-top: 15px;
     }
 }
 
@@ -336,14 +350,19 @@ img.colorpick-eyedropper-input-trigger {
         padding-inline-start: 20px;
     }
     .btn {
-        margin-top: 50px;
         margin-inline-end: 10px;
     }
     .share-btn {
+        margin-top: 50px;
         min-width: 210px;
         height: 50px;
     }
+    .save-btn{
+        margin-top: 15px;
+        height: 50px;
+    }
     .download-btn {
+        margin-top: 50px;
         min-width: 210px;
         height: 50px;
     }

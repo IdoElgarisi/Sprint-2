@@ -90,6 +90,7 @@ function onGetColor() {
     var color = document.querySelector('[name="color-selector"]').value;
     setFillColor(color)
     onRenderTxt()
+    closeModal()
 }
 
 function onGetBorderColor() {
@@ -108,4 +109,31 @@ function onFontChange(font) {
     console.log(font);
     setNewFont(font);
     onRenderTxt()
+}
+
+function onOpenColorBox() {
+    let modal = document.querySelector('.color-popup')
+    modal.style.display = 'block'
+    let btn =document.querySelector('.color-btn')
+    btn.style.display='none'
+}
+
+function closeModal() {
+    let modal = document.querySelector('.color-popup')
+    modal.style.display = 'none'
+    let btn =document.querySelector('.color-btn')
+    btn.style.display='block'
+    
+}
+
+
+function onSelectColor(t) {
+    setFillColor(t.dataset.color)
+    onRenderTxt()
+    closeModal()
+}
+function onSelectStrokeColor(t){
+    setborderColor(t.dataset.color)
+    onRenderTxt()
+    closeModal()
 }

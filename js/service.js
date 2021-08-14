@@ -178,17 +178,17 @@ function alignText(alignClass) {
     console.log(alignClass);
     switch (alignClass.value) {
         case 'align-left':
-            gMeme.lines[gCurrLineIdx].align = "start";
-            gMeme.lines[gCurrLineIdx].x = 100;
+            gMeme.lines[gCurrLineIdx].align = 'start';
+            gMeme.lines[gCurrLineIdx].x =120;
 
             break;
         case 'align-center':
-            gMeme.lines[gCurrLineIdx].align = "center";
+            gMeme.lines[gCurrLineIdx].align = 'center';
             gMeme.lines[gCurrLineIdx].x = gCanvas.width / 2;
             break;
         case 'align-right':
-            gMeme.lines[gCurrLineIdx].align = "end";
-            gMeme.lines[gCurrLineIdx].x = gCanvas.width - 150
+            gMeme.lines[gCurrLineIdx].align = 'end';
+            gMeme.lines[gCurrLineIdx].x = gCanvas.width - 100
     }
     onRenderTxt()
 }

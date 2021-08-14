@@ -90,3 +90,81 @@ html {
     color: black;
     background-color: #22252c;
 }
+
+/* .color-btn{ */
+    /* height: 25px; */
+    /* width: 25px; */
+    /* background-color: #000000; */
+/* } */
+.color-btn{
+    color: black;
+}
+.color-popup {
+    display: none;
+    width: 170px;
+    height: 70px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(216, 214, 214);
+    margin: auto;
+    grid-template-columns: 175px 75px;
+    grid-template-rows: 60px 140px;
+   position: relative;
+   left: 60px;
+   bottom: 20px;
+  
+}
+
+.color-boxes {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.color-box {
+    border-radius: 5px;
+    height: 25px;
+    width: 25px;
+    margin-inline-end: 5px;
+}
+
+.font-box-1 {
+    background: #000000
+}
+
+.font-box-2 {
+    background: #ffffff
+}
+
+.font-box-3 {
+    background: #995555
+}
+
+.font-box-4 {
+    background: #ff3333
+}
+
+.font-box-5 {
+    background: #ff8800
+}
+
+.font-box-6 {
+    background: #eeee00
+}
+
+.font-box-7 {
+    background: #22ee22
+}
+
+.font-box-8 {
+    background: #00bff3
+}
+
+.font-box-9 {
+    background: #3333ff
+}
+
+.font-box-10 {
+    background: #dd00cc
+}

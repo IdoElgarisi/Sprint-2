@@ -21,9 +21,9 @@
             <div class="logo "><a onclick="onShowGallery()" href="#"><img src="/LOGO/LOGO.png" alt="" srcset=""></a>
             </div>
             <ul class="nav-list clean-list ">
-                <li ><a onclick="onShowGallery()" href="#">Gallery</a></li>
-                <li><a  onclick="onShowMemes()" href="#">Memes</a></li>
-                <li ><a onclick="onShowAbout()" href="#">About</a></li>
+                <li><a onclick="onShowGallery()" href="#">Gallery</a></li>
+                <li><a onclick="onShowMemes()" href="#">Memes</a></li>
+                <li><a onclick="onShowAbout()" href="#">About</a></li>
             </ul>
         </nav>
         <button class="btn-menu-toggle" onclick="toggleMenu()"><span class="fa fa-bars"></span></button>
@@ -61,11 +61,78 @@
                             class="fa fa-align-center"></i></button>
                     <button class="align-right" onclick="onAlignText(this.classList)"><i
                             class="fa fa-align-right"></i></button>
-                    <div class="fill-color">
-                        <input onchange="onGetColor()" type="color" name="color-selector" class="fill-color">
+
+                    <button onclick="onOpenColorBox()" class="fill-color color-btn">
+                        <h2>F</h2>
+                    </button>
+
+                    <div class="color-picker ">
+                        <div class="color-popup">
+                            <div class="color-boxes">
+                                <div onclick="onSelectColor(this)" class="color-box font-box-1" data-color="#000000">
+                                </div>
+                                <div onclick="onSelectColor(this)" class="color-box font-box-2" data-color="#ffffff">
+                                </div>
+                                <div onclick="onSelectColor(this)" class="color-box font-box-3" data-color="#995555">
+                                </div>
+                                <div onclick="onSelectColor(this)" class="color-box font-box-4" data-color="#ff3333">
+                                </div>
+                                <div onclick="onSelectColor(this)" class="color-box font-box-5" data-color="#ff8800">
+                                </div>
+                                <div onclick="onSelectColor(this)" class="color-box font-box-6" data-color="#eeee00">
+                                </div>
+                                <div onclick="onSelectColor(this)" class="color-box font-box-7" data-color="#22ee22">
+                                </div>
+                                <div onclick="onSelectColor(this)" class="color-box font-box-8" data-color="#00bff3">
+                                </div>
+                                <div onclick="onSelectColor(this)" class="color-box font-box-9" data-color="#3333ff">
+                                </div>
+                                <div class="color-box fill-color">
+                                    <input onchange="onGetColor()" type="color" name="color-selector"
+                                        class="fill-color color-box">
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stroke-color">
-                        <input onchange="onGetBorderColor()" type="color" name="stroke-color" class="stroke-color">
+                    <button onclick="onOpenColorBox()" class="stroke-color color-btn">
+                        <h2>S</h2>
+                    </button>
+                    <div class="color-picker stroke-color">
+                        <div class="color-popup">
+                            <div class="color-boxes">
+                                <div onclick="onSelectStrokeColor(this)" class="color-box font-box-1"
+                                    data-color="#000000">
+                                </div>
+                                <div onclick="onSelectStrokeColor(this)" class="color-box font-box-2"
+                                    data-color="#ffffff">
+                                </div>
+                                <div onclick="onSelectStrokeColor(this)" class="color-box font-box-3"
+                                    data-color="#995555">
+                                </div>
+                                <div onclick="onSelectStrokeColor(this)" class="color-box font-box-4"
+                                    data-color="#ff3333">
+                                </div>
+                                <div onclick="onSelectStrokeColor(this)" class="color-box font-box-5"
+                                    data-color="#ff8800">
+                                </div>
+                                <div onclick="onSelectStrokeColor(this)" class="color-box font-box-6"
+                                    data-color="#eeee00">
+                                </div>
+                                <div onclick="onSelectStrokeColor(this)" class="color-box font-box-7"
+                                    data-color="#22ee22">
+                                </div>
+                                <div onclick="onSelectStrokeColor(this)" class="color-box font-box-8"
+                                    data-color="#00bff3">
+                                </div>
+                                <div onclick="onSelectStrokeColor(this)" class="color-box font-box-9"
+                                    data-color="#3333ff">
+                                </div>
+                                <div onclick="onSelectStrokeColor(this)" class="color-box font-box-10"
+                                    data-color="#dd00cc">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <select class="font-selector" list="fonts" onchange="onFontChange(this.value)">
                         <!-- <input type="list" class="font-selector" value="Impact" o> -->
@@ -85,6 +152,7 @@
                     <button class="btn download-btn"><a href="#" class="btn" onclick="downloadImg(this)"
                             download="my-img.jpg"> <i class="fa fa-download"></i> Dowload</a></button>
                 </div>
+                <button class="btn save-btn"><i class="fa fa-save"></i> Save</button>
             </div>
 
         </section>
@@ -95,7 +163,6 @@
     <script src="js/upload-service.js"></script>
     <script src="js/service.js"></script>
     <script src="js/controller.js"></script>
-    <!-- <script src="js/i18n-service.js"></script> -->
 </body>
 
 </html>
