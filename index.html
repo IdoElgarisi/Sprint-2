@@ -15,10 +15,10 @@
 </head>
 
 <body onload="onInit()">
-    <div class="screen" onclick="toggleMenu()"></div>
+    <div class="screen" onclick="onToggleMenu()"></div>
     <header class="main-header ">
         <nav class="main-nav flex align-center space-between">
-            <div class="logo "><a onclick="onShowGallery()" href="#"><img src="/LOGO/LOGO.png" alt="" srcset=""></a>
+            <div class="logo"><a onclick="onShowGallery()" href="#"><img src="/LOGO/LOGO.png" alt="" srcset=""></a>
             </div>
             <ul class="nav-list clean-list ">
                 <li><a onclick="onShowGallery()" href="#">Gallery</a></li>
@@ -31,6 +31,13 @@
     </header>
 
     <main class="gallery-container">
+        <div class="search-div flex space-between ">
+            <input class="search-box" name="search-box" type="search" placeholder="Search Memes...">
+            <button class="myBtn" onclick="onKeyboardFilter()"></button>
+            <div class="tags-box flex"></div>
+            <button class="btn all-btn" onclick="allFilterBy('all')">All</button>
+        </div>
+
         <section class="grid-container"></section>
     </main>
     <main class="memes-container">
@@ -148,11 +155,11 @@
                     </select>
                 </section>
                 <div class="output-container flex space-between">
-                    <button class="btn share-btn"><i class="fa fa-share"></i> Share</button>
+                    <button class="btn share-btn" onclick="uploadImg()"><i class="fa fa-share"></i> Share</button>
                     <button class="btn download-btn"><a href="#" class="btn" onclick="downloadImg(this)"
                             download="my-img.jpg"> <i class="fa fa-download"></i> Dowload</a></button>
                 </div>
-                <button class="btn save-btn"><i class="fa fa-save"></i> Save</button>
+                <button class="btn save-btn" onclick="onSaveToMemes()"><i class="fa fa-save"></i> Save</button>
             </div>
 
         </section>

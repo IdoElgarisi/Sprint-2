@@ -1,22 +1,47 @@
 'use strict';
 
-// var gKeywords = {'happy': 12,'funny puk': 1}
+var gKeywords = [
+    {
+        key: 'happy',
+        value: 20
+    },
+
+    {
+        key: 'funny',
+        value: 10
+    },
+
+    {
+        key: 'pets',
+        value: 22
+    },
+
+    {
+        key: 'baby',
+        value: 25
+    },
+
+    {
+        key: 'angry',
+        value: 15
+    },
+
+    {
+        key: 'laugh',
+        value: 12
+    },
+
+]
 const KEY = 'memesDB';
 let gCurrImg;
 let gCurrLineIdx = 0;
+let gCurrKeyIdx;
 let gLineCount = 1;
 let gCurrBgcColor = 'white'
 let gCurrBorderColor = 'black'
 let gCurrFont = 'impact'
-let gSavesMemes = [];
-
-function init() {
-    gLineCount = 1;
-    gCurrLineIdx = 0
-    gCurrFont = 'impact'
-    gCurrBgcColor = 'white'
-    gCurrBorderColor = 'black'
-}
+let gSavedMemes = [];
+let gFilterBy;
 var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
@@ -35,40 +60,61 @@ var gMeme = {
     ]
 }
 var gImgs = [
-    { id: 1, url: 'img/1.jpg', keywords: ['happy'] },
-    { id: 2, url: 'img/2.jpg', keywords: ['happy'] },
-    { id: 3, url: 'img/3.jpg', keywords: ['happy'] },
-    { id: 4, url: 'img/4.jpg', keywords: ['happy'] },
-    { id: 5, url: 'img/5.jpg', keywords: ['happy'] },
-    { id: 6, url: 'img/6.jpg', keywords: ['happy'] },
-    { id: 7, url: 'img/7.jpg', keywords: ['happy'] },
-    { id: 8, url: 'img/8.jpg', keywords: ['happy'] },
-    { id: 9, url: 'img/9.jpg', keywords: ['happy'] },
-    { id: 10, url: 'img/10.jpg', keywords: ['happy'] },
-    { id: 11, url: 'img/11.jpg', keywords: ['happy'] },
-    { id: 12, url: 'img/12.jpg', keywords: ['happy'] },
-    { id: 13, url: 'img/13.jpg', keywords: ['happy'] },
-    { id: 14, url: 'img/14.jpg', keywords: ['happy'] },
-    { id: 15, url: 'img/15.jpg', keywords: ['happy'] },
-    { id: 16, url: 'img/16.jpg', keywords: ['happy'] },
-    { id: 17, url: 'img/17.jpg', keywords: ['happy'] },
-    { id: 18, url: 'img/18.jpg', keywords: ['happy'] }
+    { id: 1, url: 'img/1.jpg', keywords: ['all', 'usa', 'trump', 'angry'] },
+    { id: 2, url: 'img/2.jpg', keywords: ['all', 'happy', 'dogs', 'pets', 'pretty'] },
+    { id: 3, url: 'img/3.jpg', keywords: ['all', 'sleepy', 'baby', 'dog'] },
+    { id: 4, url: 'img/4.jpg', keywords: ['all', 'sleepy', 'cat', 'pets'] },
+    { id: 5, url: 'img/5.jpg', keywords: ['all', 'funny', 'baby', 'sucess'] },
+    { id: 6, url: 'img/6.jpg', keywords: ['all', 'funny', 'history', 'hair'] },
+    { id: 7, url: 'img/7.jpg', keywords: ['all', 'happy', 'baby', 'cute', 'laugh'] },
+    { id: 8, url: 'img/8.jpg', keywords: ['all', 'happy', 'wonka', 'laugh'] },
+    { id: 9, url: 'img/9.jpg', keywords: ['all', 'happy', 'baby', 'laugh'] },
+    { id: 10, url: 'img/10.jpg', keywords: ['all', 'happy', 'usa', 'laugh', 'obama'] },
+    { id: 11, url: 'img/11.jpg', keywords: ['all', 'angry', 'kiss', 'paul pierce', 'matta'] },
+    { id: 12, url: 'img/12.jpg', keywords: ['all', 'happy', 'haim', 'wonder'] },
+    { id: 13, url: 'img/13.jpg', keywords: ['all', 'happy', 'gatsby', 'drink', 'cheers'] },
+    { id: 14, url: 'img/14.jpg', keywords: ['all', 'glasses', 'matrix'] },
+    { id: 15, url: 'img/15.jpg', keywords: ['all', 'happy', 'game of thrones'] },
+    { id: 16, url: 'img/16.jpg', keywords: ['all', 'happy', 'star trek', 'laugh'] },
+    { id: 17, url: 'img/17.jpg', keywords: ['all', 'putin', 'russia', 'angry'] },
+    { id: 18, url: 'img/18.jpg', keywords: ['all', 'happy', 'toys', 'toy story', 'laugh'] }
 ];
-function getMemes() {
-    return gImgs
+
+
+function init() {
+    gLineCount = 1;
+    gCurrLineIdx = 0
+    gCurrFont = 'impact'
+    gCurrBgcColor = 'white'
+    gCurrBorderColor = 'black'
+    gSavedMemes = loadFromStorage(KEY)
+    renderKeywords()
 }
 
-function setFillColor(color) {
-    gCurrBgcColor = color;
-    gMeme.lines[gCurrLineIdx].color = color;
+function renderKeywords() {
+    var strHTMLs = gKeywords.map((keyword) => {
+        return `
+        <p class="keyword" onclick="onSetFilterBy('${keyword.key}')" style="font-size:${keyword.value}px">${keyword.key}</p>
+        `
+    }).join('')
+    var elKeyWords = document.querySelector('.tags-box')
+    elKeyWords.innerHTML = strHTMLs
 }
-function setborderColor(color) {
-    gCurrBorderColor = color;
-    gMeme.lines[gCurrLineIdx].borderColor = color;
+
+
+function changeWordSize(val) {
+    var currKeywordIdx = gKeywords.findIndex((keyword) => {
+        return keyword.key === val
+    })
+    gKeywords[currKeywordIdx].value += 2
 }
-function setNewFont(font) {
-    gCurrFont = font
-    gMeme.lines[gCurrLineIdx].font = font;
+
+function getMemes() {
+    if (!gFilterBy) return gImgs
+    if (gFilterBy === 'all') return gImgs
+    return gImgs.filter((img) => {
+        return img.keywords.includes(gFilterBy)
+    })
 }
 
 function resetGMeme() {
@@ -125,7 +171,9 @@ function renderTxt(txt) {
         drawText(gMeme, meme.x, meme.y, meme.idx)
     })
 }
-
+function filterBy(keyword) {
+    gFilterBy = keyword;
+}
 function addLine() {
     gCurrLineIdx = (gLineCount - 1)
     gCurrLineIdx++
@@ -148,6 +196,7 @@ function addLine() {
     gMeme.selectedLineIdx = gCurrLineIdx;
 
 }
+
 function deleteLine() {
     gMeme.lines.splice(gCurrLineIdx, 1)
     gLineCount--
@@ -161,6 +210,7 @@ function deleteLine() {
     gMeme.selectedLineIdx = gCurrLineIdx;
     onRenderTxt()
 }
+
 function lineMove(dir) {
     switch (dir) {
         case 'up':
@@ -173,13 +223,22 @@ function lineMove(dir) {
     }
     onRenderTxt();
 }
+
+function moveIdx() {
+    gCurrLineIdx--
+    if (gCurrLineIdx < 0) { gCurrLineIdx = gLineCount - 1 }
+    document.querySelector('.text-line').value = gMeme.lines[gCurrLineIdx].txt
+    document.querySelector('.text-line').focus()
+    gMeme.selectedLineIdx = gCurrLineIdx;
+}
+
 function alignText(alignClass) {
     gMeme.lines[gCurrLineIdx].align = alignClass;
     console.log(alignClass);
     switch (alignClass.value) {
         case 'align-left':
             gMeme.lines[gCurrLineIdx].align = 'start';
-            gMeme.lines[gCurrLineIdx].x =120;
+            gMeme.lines[gCurrLineIdx].x = 120;
 
             break;
         case 'align-center':
@@ -193,12 +252,19 @@ function alignText(alignClass) {
     onRenderTxt()
 }
 
-function moveIdx() {
-    gCurrLineIdx--
-    if (gCurrLineIdx < 0) { gCurrLineIdx = gLineCount - 1 }
-    document.querySelector('.text-line').value = gMeme.lines[gCurrLineIdx].txt
-    document.querySelector('.text-line').focus()
-    gMeme.selectedLineIdx = gCurrLineIdx;
+function setFillColor(color) {
+    gCurrBgcColor = color;
+    gMeme.lines[gCurrLineIdx].color = color;
+}
+
+function setborderColor(color) {
+    gCurrBorderColor = color;
+    gMeme.lines[gCurrLineIdx].borderColor = color;
+}
+
+function setNewFont(font) {
+    gCurrFont = font
+    gMeme.lines[gCurrLineIdx].font = font;
 }
 
 function toggleMenu() {
@@ -207,4 +273,10 @@ function toggleMenu() {
     } else {
         document.body.classList.toggle('menu-open');
     }
+}
+
+function saveToMemes() {
+    gSavedMemes.push(gMeme)
+    console.log(gSavedMemes);
+    saveToStorage(KEY, gSavedMemes);
 }

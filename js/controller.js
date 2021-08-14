@@ -1,18 +1,21 @@
 'use strict';
 let gCanvas;
 let gCtx;
+let gMemsCanvas;
+let gMemsCtx;
 
 function onInit() {
     init()
     renderGallery()
+    addListeners()
+    // renderTags()
     gCanvas = document.getElementById('canvas')
     gCtx = gCanvas.getContext('2d')
-
     document.querySelector('.gallery-container').hidden = false;
     document.querySelector('.editor-container').hidden = true;
     document.querySelector('.memes-container').hidden = true;
-
 }
+
 function renderGallery() {
     let memes = getMemes();
     var imgHtmls = memes.map((meme) => {
@@ -22,7 +25,16 @@ function renderGallery() {
     document.querySelector('.grid-container').innerHTML = imgHtmls.join('')
 
 }
+function addListeners() {
+    let input = document.querySelector('.search-box')
+    input.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.querySelector('.myBtn').click();
 
+        }
+    });
+}
 function onShowEditor({ id }) {
     gCurrLineIdx = 0;
     resetGMeme()
@@ -47,6 +59,7 @@ function onShowMemes() {
     document.querySelector('.memes-container').hidden = false;
     document.querySelector('.gallery-container').hidden = true;
     document.querySelector('.editor-container').hidden = true;
+    renderSavedMemes()
 }
 
 
@@ -101,29 +114,47 @@ function onGetBorderColor() {
 function onOpenColorBox() {
     document.querySelector('.color-popup ibox').classList.toggle('.open-box')
 }
+function onToggleMenu() {
+    toggleMenu()
 
-// function onSaveMeme(){
+}
 
-// }
 function onFontChange(font) {
-    console.log(font);
     setNewFont(font);
     onRenderTxt()
+}
+
+function onSetFilterBy(val) {
+    filterBy(val)
+    changeWordSize(val)
+    renderGallery()
+    renderKeywords()
+}
+function allFilterBy(val){
+    filterBy(val)
+    renderGallery()
+}
+function onKeyboardFilter(t) {
+    let txt=document.querySelector('[name="search-box"]').value
+    filterBy(txt)
+    renderGallery()
+    renderKeywords()
+
 }
 
 function onOpenColorBox() {
     let modal = document.querySelector('.color-popup')
     modal.style.display = 'block'
-    let btn =document.querySelector('.color-btn')
-    btn.style.display='none'
+    let btn = document.querySelector('.color-btn')
+    btn.style.display = 'none'
 }
 
 function closeModal() {
     let modal = document.querySelector('.color-popup')
     modal.style.display = 'none'
-    let btn =document.querySelector('.color-btn')
-    btn.style.display='block'
-    
+    let btn = document.querySelector('.color-btn')
+    btn.style.display = 'block'
+
 }
 
 
@@ -132,8 +163,11 @@ function onSelectColor(t) {
     onRenderTxt()
     closeModal()
 }
-function onSelectStrokeColor(t){
+function onSelectStrokeColor(t) {
     setborderColor(t.dataset.color)
     onRenderTxt()
     closeModal()
+}
+function onSaveToMemes() {
+    saveToMemes()
 }
