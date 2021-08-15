@@ -11,10 +11,8 @@ function onInit() {
     gCtx = gCanvas.getContext('2d')
     resizeCanvas()
     document.querySelector('.gallery-container').hidden = false;
-    document.querySelector('.gallery-container').hidden = true;
     document.querySelector('.editor-container').hidden = true;
     document.querySelector('.memes-container').hidden = true;
-    document.querySelector('.memes-container').hidden = false;
     addListeners()
 
 }
