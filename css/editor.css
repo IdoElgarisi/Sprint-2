@@ -178,6 +178,28 @@ img.colorpick-eyedropper-input-trigger {
     display: none;
 }
 
+.saved-modal {
+    display: none;
+    background-color: rgb(234, 248, 105);
+    border-radius: 10px;
+    position: absolute;
+    height: 150px;
+    width: 200px;
+    left: 25vw;
+    top: 34vh;
+}
+
+.saved-modal h2 {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.saved-modal h4 {
+    padding-top: 10px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
 @media (max-width:840px) {
     .edit-area {
         margin-top: 20px;
@@ -309,6 +331,12 @@ img.colorpick-eyedropper-input-trigger {
     .save-btn {
         margin-top: 15px;
     }
+    .saved-modal {
+        height: 150px;
+        width: 300px;
+        left: 34vw;
+        top: 34vh;
+    }
 }
 
 @media (min-width:1020px) {
@@ -358,5 +386,11 @@ img.colorpick-eyedropper-input-trigger {
         margin-top: 50px;
         min-width: 210px;
         height: 50px;
+    }
+    .saved-modal {
+        height: 150px;
+        width: 300px;
+        left: 34vw;
+        top: 34vh;
     }
 }

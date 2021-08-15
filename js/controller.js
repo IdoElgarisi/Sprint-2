@@ -3,17 +3,20 @@ let gCanvas;
 let gCtx;
 let gMemsCanvas;
 let gMemsCtx;
-
 function onInit() {
     init()
     renderGallery()
-    addListeners()
-    // renderTags()
+    addSearchListeners()
     gCanvas = document.getElementById('canvas')
     gCtx = gCanvas.getContext('2d')
+    resizeCanvas()
     document.querySelector('.gallery-container').hidden = false;
+    document.querySelector('.gallery-container').hidden = true;
     document.querySelector('.editor-container').hidden = true;
     document.querySelector('.memes-container').hidden = true;
+    document.querySelector('.memes-container').hidden = false;
+    addListeners()
+
 }
 
 function renderGallery() {
@@ -25,7 +28,7 @@ function renderGallery() {
     document.querySelector('.grid-container').innerHTML = imgHtmls.join('')
 
 }
-function addListeners() {
+function addSearchListeners() {
     let input = document.querySelector('.search-box')
     input.addEventListener("keyup", function (event) {
         if (event.keyCode === 13) {
@@ -53,20 +56,20 @@ function onShowGallery() {
     document.querySelector('.gallery-container').hidden = false;
     document.querySelector('.editor-container').hidden = true;
     document.querySelector('.memes-container').hidden = true;
+    onFilterByAll('all')
 }
 function onShowMemes() {
     document.body.classList.remove('menu-open')
     document.querySelector('.memes-container').hidden = false;
     document.querySelector('.gallery-container').hidden = true;
     document.querySelector('.editor-container').hidden = true;
-    renderSavedMemes()
+    createSavedCanvas()
 }
 
 
 function onRenderTxt() {
     let txt = document.querySelector('.text-line').value
     renderTxt(txt)
-
 }
 function onAddLine() {
     addLine()
@@ -130,13 +133,14 @@ function onSetFilterBy(val) {
     renderGallery()
     renderKeywords()
 }
-function allFilterBy(val){
+function onFilterByAll(val) {
     filterBy(val)
     renderGallery()
 }
 function onKeyboardFilter(t) {
-    let txt=document.querySelector('[name="search-box"]').value
-    filterBy(txt)
+    let txt = document.querySelector('[name="search-box"]').value
+    console.log(txt.toLowerCase());
+    filterBy(txt.toLowerCase())
     renderGallery()
     renderKeywords()
 
@@ -171,3 +175,6 @@ function onSelectStrokeColor(t) {
 function onSaveToMemes() {
     saveToMemes()
 }
+
+
+

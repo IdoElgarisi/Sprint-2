@@ -3,20 +3,39 @@
     background-color: #383b42;
     border-radius: 15px;
     height: 600px;
+    /* height: 100vh; */
+}
+.memes-area.center{
+    justify-content: center;
+}
+.memes-area.space-around{
+    justify-content: space-around;
+}
+.memes-msg {
+    text-align: center;
+    padding-top: 20px;
+    color: whitesmoke;
+}
+
+.saved-memes-canvas{
+    margin-inline-start: 15px;
+    margin-top: 15px;
 }
 
 @media (max-width:840px) {
-    .memes-container{
+    .memes-container {
         width: 90%;
     }
 }
+
 @media (min-width:840px) {
-    .memes-container{
+    .memes-container {
         width: 800px;
     }
 }
+
 @media (min-width:1020px) {
-    .memes-container{
+    .memes-container {
         width: 980px;
     }
 }

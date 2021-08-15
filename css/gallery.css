@@ -107,7 +107,7 @@ a {
     height: 50px;
     background-color:  #22252c;
     margin-top: 20px;
-    margin-inline-start: 25px;
+    margin-inline-start: 35px;
     padding-left: 10px;
     color: white;
    
@@ -120,9 +120,9 @@ a {
     height: 50px;
     max-width:90%;
     box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
-    border-radius: 25px;
+    border-radius: 29px;
     margin-top: 20px;
-    margin-inline-start: 10px;
+    margin-inline-start: 35px;
     background-color: #9c9a9a;
     
 }
@@ -215,12 +215,14 @@ a {
         flex-direction: row;
     }
     .search-box{
-    width: 250px;
-
-    }
-    .tags-box{
-        width: 450px;
-    }
+        width: 50%;
+        min-width: 350px;
+    
+        }
+        .tags-box{
+            width:50%;
+            min-width: 350px;
+        }
    
 }
 
@@ -264,11 +266,13 @@ a {
         flex-direction: row;
     }
     .search-box{
-    width: 250px;
+    width: 50%;
+    min-width: 350px;
 
     }
     .tags-box{
-        width: 450px;
+        width:50%;
+        min-width: 350px;
     }
    
 }

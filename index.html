@@ -35,21 +35,28 @@
             <input class="search-box" name="search-box" type="search" placeholder="Search Memes...">
             <button class="myBtn" onclick="onKeyboardFilter()"></button>
             <div class="tags-box flex"></div>
-            <button class="btn all-btn" onclick="allFilterBy('all')">All</button>
         </div>
+        <button class="btn all-btn" onclick="onFilterByAll('all')">All</button>
 
-        <section class="grid-container"></section>
+        <section class="grid-container">
+        </section>
     </main>
     <main class="memes-container">
-        <section class="memes-area"></section>
+        <section class="memes-area flex space-around">
+        </section>
     </main>
     <main class="editor-container">
         <section class="edit-area flex align-center ">
             <div class="img-area">
                 <canvas class="canvas" id="canvas" width="500" height="500"></canvas>
             </div>
+            <div class="saved-modal">
+                <h2>Meme Saved!</h2>
+                <h4>Go check it out!</h4>
+            </div>
             <div class="editor-bar flex direction align-center">
-                <input type="text" class="text-line" onkeyup="onRenderTxt()">
+                <input type="text" class="text-line" placeholder="Hello"
+                    onkeyup="onRenderTxt()">
                 <div class="edit-btns">
                     <button class="up-btn" onclick="onMoveLine(this)"><i class="fa fa-arrow-up"></i></button>
                     <button class="down-btn" onclick="onMoveLine(this)" class="down"><i
@@ -170,6 +177,9 @@
     <script src="js/upload-service.js"></script>
     <script src="js/service.js"></script>
     <script src="js/controller.js"></script>
+    <script src="js/drag&drop.js"></script>
+    <script src="js/saved-memes.js"></script>
+
 </body>
 
 </html>
