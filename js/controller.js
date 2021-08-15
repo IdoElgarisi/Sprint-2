@@ -14,7 +14,6 @@ function onInit() {
     document.querySelector('.editor-container').hidden = true;
     document.querySelector('.memes-container').hidden = true;
     addListeners()
-
 }
 
 function renderGallery() {
@@ -26,6 +25,13 @@ function renderGallery() {
     document.querySelector('.grid-container').innerHTML = imgHtmls.join('')
 
 }
+
+function resizeCanvas() {
+    const elContainer = document.querySelector('.img-area')
+    gCanvas.width = elContainer.offsetWidth
+    gCanvas.height = elContainer.offsetHeight
+}
+
 function addSearchListeners() {
     let input = document.querySelector('.search-box')
     input.addEventListener("keyup", function (event) {
@@ -37,12 +43,13 @@ function addSearchListeners() {
     });
 }
 function onShowEditor({ id }) {
+    let xWidth = gCanvas.width / 2;
     gCurrLineIdx = 0;
     resetGMeme()
     gMeme.selectedImgId = id;
     gCurrImg = getImgById(id);
     drawImg(gCurrImg.url)
-    drawText(gMeme, 150, 50, gCurrLineIdx)
+    drawText(gMeme, xWidth, 50, gCurrLineIdx)
     document.body.classList.remove('menu-open')
     document.querySelector('.editor-container').hidden = false;
     document.querySelector('.gallery-container').hidden = true;
@@ -64,7 +71,14 @@ function onShowMemes() {
     createSavedCanvas()
 }
 
-
+function onBtnClicked(btn) {
+    btn.classList.add('clicked')
+    console.log(btn.classList);
+}
+function onBtnRelease(btn) {
+    btn.classList.remove('clicked')
+    console.log(btn.classList);
+}
 function onRenderTxt() {
     let txt = document.querySelector('.text-line').value
     renderTxt(txt)
@@ -173,6 +187,7 @@ function onSelectStrokeColor(t) {
 function onSaveToMemes() {
     saveToMemes()
 }
+
 
 
 

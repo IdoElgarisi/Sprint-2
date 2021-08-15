@@ -1,87 +1,18 @@
-
 .gallery-container {
     margin: 0 auto;
     background-color: #383b42;
     border-radius: 15px;
     height: 600px;
-
+}
+.grid-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-around;
+    justify-items: center;
+    align-items: center;
 }
 
-.grid-item img {
-    border-radius: 10px;
-}
-
-.item-1 {
-    grid-area: item-1;
-}
-
-.item-2 {
-    grid-area: item-2;
-}
-
-.item-3 {
-    grid-area: item-3;
-}
-
-.item-4 {
-    grid-area: item-4;
-}
-
-.item-5 {
-    grid-area: item-5;
-}
-
-.item-6 {
-    grid-area: item-6;
-}
-
-.item-7 {
-    grid-area: item-7;
-}
-
-.item-8 {
-    grid-area: item-8;
-}
-
-.item-9 {
-    grid-area: item-9;
-}
-
-.item-10 {
-    grid-area: item-10;
-}
-
-.item-11 {
-    grid-area: item-11;
-}
-
-.item-12 {
-    grid-area: item-12;
-}
-
-.item-13 {
-    grid-area: item-13;
-}
-
-.item-14 {
-    grid-area: item-14;
-}
-
-.item-15 {
-    grid-area: item-15;
-}
-
-.item-16 {
-    grid-area: item-16;
-}
-
-.item-17 {
-    grid-area: item-17;
-}
-
-.item-18 {
-    grid-area: item-18;
-}
 
 a {
     color: white;
@@ -97,39 +28,46 @@ a {
     line-height: 24px;
     margin: 0 0 0 8px;
 }
-.search-div{
+
+.search-div {
     flex-direction: column;
-}
-.search-box{
-    
-    max-width: 90%;
-    border-radius: 29px;
-    height: 50px;
-    background-color:  #22252c;
-    margin-top: 20px;
-    margin-inline-start: 35px;
-    padding-left: 10px;
-    color: white;
+    width: 100%;
+    align-items: center;
    
     
 }
-.search-box:focus{
+
+.search-box {
+    width: 90%;
+    border-radius: 29px;
+    height: 50px;
+    background-color: #22252c;
+    margin-top: 20px;
+    padding-left: 10px;
+    color: white;
+}
+
+.search-box:focus {
     background-color: #3f3f41;
 }
-.tags-box{
+
+.tags-box {
     height: 50px;
-    max-width:90%;
+    width: 90%;
     box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
     border-radius: 29px;
     margin-top: 20px;
-    margin-inline-start: 35px;
+    padding-inline-start: 10px;
+    padding-inline-end: 20px;
     background-color: #9c9a9a;
-    
+    align-items: center;
 }
-.keyword{
+
+.keyword {
     margin-inline-start: 10px;
 }
-.btn.all-btn{
+
+.btn.all-btn {
     margin-top: 30px;
     margin-inline-start: 10px;
     width: 50px;
@@ -137,49 +75,25 @@ a {
     color: black;
 }
 
-@media (max-width:500px) {
+@media (max-width:440px) {
     .gallery-container {
         max-width: 90%;
         height: 100%;
     }
-    .grid-container {
-        display: grid;
-        justify-content: center;
-        align-content: center;
-        justify-items: center;
-        align-items: center;
-        grid-template-columns: repeat(2, 125px);
-        grid-template-rows: repeat(auto-fill, 125px);
-        gap: 10px;
-        grid-template-areas: "item-1 item-2" "item-3 item-4" "item-5 item-6" "item-7 item-8" "item-9 item-10" "item-11 item-12" "item-13 item-14" "item-15 item-16" "item-17 item-18";
-        padding: 20px 10px;
-     
-    }
+ 
+ 
     .grid-item img {
         width: 125px;
         border-radius: 10px;
     }
-  
 }
 
-@media (min-width:500px) {
+@media (min-width:440px) {
     .gallery-container {
         max-width: 90%;
         height: 100%;
     }
-    .grid-container {
-        display: grid;
-        justify-content: center;
-        align-content: center;
-        justify-items: center;
-        align-items: center;
-        padding: 20px 10px;
-        grid-template-columns: repeat(2, 200px);
-        grid-template-rows: repeat(auto-fill, 200px);
-        gap: 10px 20px;
-        grid-template-areas: "item-1 item-2 ""item-3 item-4" "item-5 item-6" "item-7 item-8" "item-9 item-10" "item-11 item-12" "item-13 item-14" "item-15 item-16" "item-17 item-18";
-        
-    }
+ 
     .grid-item img {
         object-fit: cover;
         width: 200px;
@@ -193,37 +107,24 @@ a {
         height: 100%;
         margin: 0 auto;
     }
-    .grid-container {
-        display: grid;
-        justify-content: center;
-        align-content: center;
-        justify-items: center;
-        align-items: center;
-        padding-top: 50px;
-        gap: 10px 20px;
-        grid-template-columns: repeat(3, 200px);
-        grid-template-rows: repeat(auto-fill, 200px);
-        grid-template-areas: "item-1 item-2 item-3" "item-4 item-5 item-6" "item-7 item-8 item-9" "item-10 item-11 item-12" "item-13 item-14 item-15"" item-16 item-17 item-18";
-    }
+  
     .grid-item img {
         object-fit: cover;
         width: 200px;
         margin: 15px 20px;
         border-radius: 10px;
     }
-    .search-div{
+    .search-div {
         flex-direction: row;
     }
-    .search-box{
+    .search-box {
         width: 50%;
         min-width: 350px;
-    
-        }
-        .tags-box{
-            width:50%;
-            min-width: 350px;
-        }
-   
+    }
+    .tags-box {
+        width: 50%;
+        min-width: 350px;
+    }
 }
 
 /* REGULAR */
@@ -238,14 +139,9 @@ a {
         height: 750px;
         overflow-y: scroll;
     }
-    
     .grid-container {
-        display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
-        align-content: center;
-        justify-items: center;
-        align-items: center;
+      
     }
     .grid-item img {
         width: 150px;
@@ -262,17 +158,22 @@ a {
         border-radius: 7px;
         background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
     }
-    .search-div{
+    .search-div {
         flex-direction: row;
     }
-    .search-box{
-    width: 50%;
-    min-width: 350px;
-
-    }
-    .tags-box{
-        width:50%;
+    .search-box {
+        width: 50%;
         min-width: 350px;
     }
-   
+    
+    .tags-box {
+        width: 50%;
+        max-width: 460px;
+        min-width: 350px;
+        padding-inline-start: 5px;
+        padding-inline-end: 10px;
+    }
+    .tags-box {
+        margin-inline-start: 35px;
+    }
 }

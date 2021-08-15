@@ -64,12 +64,6 @@ function onUp() {
     document.body.style.cursor = 'grab'
 }
 
-function resizeCanvas() {
-    const elContainer = document.querySelector('.img-area')
-    gCanvas.width = elContainer.offsetWidth
-    gCanvas.height = elContainer.offsetHeight
-}
-
 function getEvPos(ev) {
     var pos = {
         x: ev.offsetX,

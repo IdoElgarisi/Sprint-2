@@ -11,10 +11,11 @@ let gCurrBorderColor = 'black'
 let gCurrFont = 'impact'
 let gFilterBy;
 let gSavedMemes = [];
+
 let gKeywords = [
     {
         key: 'happy',
-        value: 20
+        value: 16
     },
 
     {
@@ -24,17 +25,17 @@ let gKeywords = [
 
     {
         key: 'pets',
-        value: 22
+        value: 16
     },
 
     {
         key: 'baby',
-        value: 25
+        value: 12
     },
 
     {
         key: 'angry',
-        value: 15
+        value: 14
     },
 
     {
@@ -44,6 +45,7 @@ let gKeywords = [
 
 ]
 let gMeme = {
+    // canvasWidth:getCanvasWidth(),
     selectedImgId: 5,
     selectedLineIdx: 0,
     id: makeId(6),
@@ -57,7 +59,7 @@ let gMeme = {
             font: gCurrFont,
             idx: gCurrLineIdx,
             pos: {
-                x: 250,
+                x:250,
                 y: 50
             }
         }
@@ -139,7 +141,7 @@ function resetGMeme() {
                 font: gCurrFont,
                 idx: 0,
                 pos: {
-                    x: 250,
+                    x: gCanvas.width / 2,
                     y: 50
                 }
             }
@@ -228,7 +230,7 @@ function deleteLine() {
 function lineMove(dir) {
     switch (dir) {
         case 'up':
-            gMeme.lines[gCurrLineIdx].pos.x += -20
+            gMeme.lines[gCurrLineIdx].pos.y += -20
             break;
         case 'down':
             gMeme.lines[gCurrLineIdx].pos.y += 20
@@ -248,20 +250,21 @@ function moveIdx() {
 }
 
 function alignText(alignClass) {
-    gMeme.lines[gCurrLineIdx].align = alignClass;
+    console.log(alignClass);
     switch (alignClass.value) {
         case 'align-left':
-            gMeme.lines[gCurrLineIdx].align = 'start';
-            gMeme.lines[gCurrLineIdx].x = 120;
-
+            gMeme.lines[gCurrLineIdx].align = 'start'
+            gMeme.lines[gCurrLineIdx].pos.x = 100;
             break;
         case 'align-center':
-            gMeme.lines[gCurrLineIdx].align = 'center';
-            gMeme.lines[gCurrLineIdx].x = gCanvas.width / 2;
+            gMeme.lines[gCurrLineIdx].align = 'center'
+            gMeme.lines[gCurrLineIdx].pos.x = gCanvas.width / 2;
             break;
         case 'align-right':
-            gMeme.lines[gCurrLineIdx].align = 'end';
-            gMeme.lines[gCurrLineIdx].x = gCanvas.width - 100
+            gMeme.lines[gCurrLineIdx].align = 'end'
+            gMeme.lines[gCurrLineIdx].pos.x = gCanvas.width - 100
+            break
+            
     }
     onRenderTxt()
 }
@@ -274,11 +277,13 @@ function setFillColor(color) {
 function setborderColor(color) {
     gCurrBorderColor = color;
     gMeme.lines[gCurrLineIdx].borderColor = color;
+    
 }
 
 function setNewFont(font) {
     gCurrFont = font
     gMeme.lines[gCurrLineIdx].font = font;
+    onRenderTxt()
 }
 
 function toggleMenu() {

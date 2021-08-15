@@ -1,6 +1,5 @@
 'use strict';
 let savedMemes = getSavedMemes();
-console.log(savedMemes);
 let savedCanvas;
 let savedCtx;
 // let gSavedCanvas
@@ -31,7 +30,6 @@ function createSavedCanvas() {
 
 function renderSavedMemes() {
     if (gSavedMemes.length === 0) return
-    // let canvas = document.querySelector('.saved-memes-canvas')
     let savedMemes = gSavedMemes.map(meme => {
         let currImg = `img/${meme.selectedImgId}.jpg`
         drawSavedImg(currImg)
